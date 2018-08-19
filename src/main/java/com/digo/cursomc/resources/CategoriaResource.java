@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.digo.cursomc.domain.Categoria;
-import com.digo.cursomc.service.CategoriaService;
+import com.digo.cursomc.services.CategoriaService;
 
 @RestController
 @RequestMapping(value="/categorias")
