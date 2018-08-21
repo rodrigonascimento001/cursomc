@@ -1,4 +1,4 @@
-package com.digo.cursomc.resources;
+package com.digo.cursomc.resources.exception;
 
 import javax.servlet.http.HttpServletRequest;
 

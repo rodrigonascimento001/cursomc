@@ -1,4 +1,4 @@
-package com.digo.cursomc.resources;
+package com.digo.cursomc.resources.exception;
 
 import java.io.Serializable;
 
