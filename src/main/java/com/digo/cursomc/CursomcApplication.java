@@ -15,6 +15,7 @@ import com.digo.cursomc.domain.Cidade;
 import com.digo.cursomc.domain.Cliente;
 import com.digo.cursomc.domain.Endereco;
 import com.digo.cursomc.domain.Estado;
+import com.digo.cursomc.domain.ItemPedido;
 import com.digo.cursomc.domain.Pagamento;
 import com.digo.cursomc.domain.PagamentoComBoleto;
 import com.digo.cursomc.domain.PagamentoComCartao;
@@ -27,6 +28,7 @@ import com.digo.cursomc.repositories.CidadeRepository;
 import com.digo.cursomc.repositories.ClienteRepository;
 import com.digo.cursomc.repositories.EnderecoRepository;
 import com.digo.cursomc.repositories.EstadoRepository;
+import com.digo.cursomc.repositories.ItemPedidoRepository;
 import com.digo.cursomc.repositories.PagamentoRepository;
 import com.digo.cursomc.repositories.PedidoRepository;
 import com.digo.cursomc.repositories.ProdutoRepository;
@@ -49,6 +51,8 @@ public class CursomcApplication implements CommandLineRunner {
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
 	
 	
 	public static void main(String[] args) {
@@ -112,6 +116,20 @@ public class CursomcApplication implements CommandLineRunner {
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1,ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1,pagto2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0.00, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1,800.00);
+		
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+		
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));
+		
 	}
 	
 	
